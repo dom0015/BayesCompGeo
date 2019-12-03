@@ -1,0 +1,7 @@
+#!/bin/bash
+
+echo "Hello $USER."
+echo "Current working directory : $(pwd)"
+cd HYDROMECH
+cd $cesta
+matlab -r "run_sampling; exit"
