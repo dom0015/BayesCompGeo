@@ -15,59 +15,23 @@ DAMH_MULTIPLICITY=[];
 DAMH_u=[];
 DAMH_Gu=[];
 for i=1:batches
-    cd([folder_name '/res'])
-    t0=dir(['MH_' label '_' num2str(i) '_0.mat']);
-    t1=dir(['MH_' label '_' num2str(i) '_1.mat']);
-    cd('..');
-    cd('..');
-    if t0.bytes > t1.bytes 
-        filename=[folder_name '/res/MH_' label '_' num2str(i) '_0.mat'];
-        disp('MH0')
-    else
-        filename=[folder_name '/res/MH_' label '_' num2str(i) '_1.mat'];
-        disp('MH1')
-    end
-    
+    filename = choose0or1('MH', i, folder_name, label);
     load(filename)
     MH_SAMPLES=[MH_SAMPLES; SAMPLES];
     MH_MULTIPLICITY=[MH_MULTIPLICITY; MULTIPLICITY];
     MH_u=[MH_u; evaluated_u_mh];
     MH_Gu=[MH_Gu; evaluated_Gu_mh];
-    if t0.bytes > t1.bytes 
-        filename=[folder_name '/res/DAMHSMUdata_' label '_' num2str(i) '_0.mat'];
-        disp('MH0')
-    else
-        filename=[folder_name '/res/DAMHSMUdata_' label '_' num2str(i) '_1.mat'];
-        disp('MH1')
-    end
+    filename = choose0or1('DAMHSMUdata', i, folder_name, label);
     load(filename)
 %     DAMHSMU_SAMPLES=[DAMHSMU_SAMPLES; SAMPLES];
     DAMHSMU_u=[DAMHSMU_u; evaluated_u_mh];
     DAMHSMU_Gu=[DAMHSMU_Gu; evaluated_Gu_mh];
-    if t0.bytes > t1.bytes 
-        filename=[folder_name '/res/DAMHdata_' label '_' num2str(i) '_0.mat'];
-        disp('MH0')
-    else
-        filename=[folder_name '/res/DAMHdata_' label '_' num2str(i) '_1.mat'];
-        disp('MH1')
-    end
+    filename = choose0or1('DAMHdata', i, folder_name, label);
     load(filename)
 %     DAMH_SAMPLES=[DAMH_SAMPLES; SAMPLES];
     DAMH_u=[DAMH_u; evaluated_u_mh];
     DAMH_Gu=[DAMH_Gu; evaluated_Gu_mh];
-    cd([folder_name '/res'])
-    t0=dir(['DAMH_' label '_' num2str(i) '_0.mat']);
-    t1=dir(['DAMH_' label '_' num2str(i) '_1.mat']);
-    cd('..');
-    cd('..');
-    if t0.bytes>t1.bytes
-        filename=[folder_name '/res/DAMH_' label '_' num2str(i) '_0.mat'];
-        disp('DAMMH0')
-    else
-        filename=[folder_name '/res/DAMH_' label '_' num2str(i) '_1.mat'];
-        disp('DAMMH1')
-    end
-    
+    filename = choose0or1('DAMH', i, folder_name, label);
     load(filename)
     DAMH_SAMPLES=[DAMH_SAMPLES; SAMPLES];
     DAMH_MULTIPLICITY=[DAMH_MULTIPLICITY; MULTIPLICITY];

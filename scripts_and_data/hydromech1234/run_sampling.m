@@ -13,10 +13,10 @@ chosen_confs = [1];
 reduction=0.5;
 initial_cov=[0.1,0.1];
 
-maxtimeMH=0.2*60*4;%*60;
-maxtimeDAMHSMU=0.4*60*4;%*60;
-maxtimeDAMHSMU2=0.6*60*4;%*60;
-maxtimeDAMH=0.95*60*4;%*60;
+maxtimeMH=0.2*60*10;%*60;
+maxtimeDAMHSMU=0.4*60*10;%*60;
+maxtimeDAMHSMU2=0.6*60*10;%*60;
+maxtimeDAMH=0.95*60*10;%*60;
 
 %% forward model and its parameters
 no_confs=length(chosen_confs);
@@ -34,6 +34,7 @@ Npar=length(u_real);
 
 G_real=G(u_real);
 Nobs=length(G_real);
+disp(ceil(log10(abs(G_real))))
 
 %% Bayes parameters
 gamma=[1 1 1 1]'; % prior standard deviation
